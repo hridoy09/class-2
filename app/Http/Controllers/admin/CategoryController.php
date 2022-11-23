@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Category;
+use PharIo\Manifest\Url;
 
 class CategoryController extends Controller
 {
@@ -62,7 +63,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category=Category::findOrFail($id);
+        return view('admin.category.edit', compact('category'));
     }
 
     /**
@@ -74,7 +76,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $category=Category::findOrFail($id);
+        $category->name=$request->name;
+        $category->save();
+        return redirect('category/index');
     }
 
     /**
@@ -85,6 +90,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category=Category::findOrfail($id);
+        $category->delete();
+        return back();
     }
 }

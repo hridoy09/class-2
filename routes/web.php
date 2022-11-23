@@ -25,7 +25,10 @@ Route::get('/index', function () {
 
 Route::get('/category/create', [CategoryController::class, 'create']);
 Route::get('/category/index', [CategoryController::class, 'index']);
+Route::get('/category/edit/{id}', [CategoryController::class, 'edit']);
 Route::post('/category/store', [CategoryController::class, 'store']);
+Route::post('/category/update/{id}', [CategoryController::class, 'update']);
+Route::get('/category/delete/{id}', [CategoryController::class, 'destroy']);
 
 Route::get('/product/create', [ProductController::class, 'create']);
 Route::post('/product/store', [ProductController::class, 'store']);

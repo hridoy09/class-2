@@ -6,6 +6,7 @@
                 <table class="table table-dark">
                     <thead>
                       <tr>
+                        <th scope="col">Sr no.</th>
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
 
@@ -17,9 +18,10 @@
                         @foreach ($categories as $category)
                             <tr>
                             <td>{{ $loop->iteration }}</td>
+                            <td>{{$category->id }}</td>
                             <td>{{$category->name  }}</td>
-                            <td><a class="btn btn-md btn-warning" href="">Edit</a>
-                          <a class="btn btn-md btn-danger" href="">Delete</a></td>
+                            <td><a class="btn btn-md btn-warning" href="{{URL::to('/category/edit', $category->id)}}">Edit</a>
+                          <a class="btn btn-md btn-danger" href="{{URL::to('/category/delete', $category->id)}}">Delete</a></td>
                           </tr>
                         @endforeach
 
